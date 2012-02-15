@@ -8,9 +8,9 @@ audio:not([controls]) { display: none; }
 [hidden] { display: none; }
 
 html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background: #111; }
-body { margin: 0; font-size: 13px; line-height: 1.231;
-		background: #210 url(../images/bg-body.jpg) no-repeat fixed 50% 0; background-size: cover; }
-body, button, input, select, textarea { font-family: Exo, sans-serif; color: #222; }
+body { margin: 0; font-size: 13px; line-height: 1.231; }
+#bg	{ background: #210 url(../images/bg-body-mobile.jpg) no-repeat fixed 50% 0; background-size: cover; }
+body, button, input, select, textarea { font-family: sans-serif; color: #222; }
 
 a { color: #00e; }
 a:visited { color: #551a8b; }
@@ -66,7 +66,7 @@ td { vertical-align: top; }
     Author: Jonathan Verrecchia
    =================================================== */
 
-body{ font:16px/24px Helvetica, Helvetica Neue, Arial, sans-serif; }
+body{ font:16px/24px Arial, Helvetica Neue, Arial, sans-serif; }
 
 .wrapper{
 	width:90%;
@@ -77,15 +77,16 @@ body{ font:16px/24px Helvetica, Helvetica Neue, Arial, sans-serif; }
     ALL: Orange Theme
    =================== */
 
-#header-container	{ border-bottom: 10px solid rgba(0,0,0,.5); }
+
+#header-container	{ border-bottom: 10px solid rgba(0,0,0,.5); position: relative; }
 #footer-container	{ border-top:    10px solid #000; }
-#main-container		{ }
+#main-container		{}
 #main article		{ background: rgba(0,0,0,.5); color: #eee; padding: 1px 2%; }
 #main aside			{ border-top:    10px solid #000; }
 
 #main aside + aside	{ margin-top: 20px; }
 
-#header-container	{ background: -webkit-linear-gradient(rgba(0,0,0,.9), rgba(25,25,25,.9)); }
+#header-container	{ background: #111; background: -webkit-linear-gradient(rgba(0,0,0,.9), rgba(25,25,25,.9)); }
 #footer-container	{ background: #111; }
 #main aside			{ background: rgba(25,25,25,.8); }
 
@@ -200,6 +201,11 @@ nav a:hover{
 
 #footer-container footer:after{ content: 'iPad'; }
 
+#bg					{ background-image: url(../images/bg-body.jpg); }
+
+#header-container	{ position: fixed; top: 0; left: 0; right: 0; z-index: 999; }
+#main-container		{ padding-top: 100px }
+
 /* ====================
     WIDE: CSS3 Effects
    ==================== */
@@ -245,6 +251,9 @@ nav a:hover{
 
 #footer-container footer:after{ content: 'Desktop & iPad (landscape)'; }
 
+body		{ background: #210 url(../images/bg-body.jpg) no-repeat fixed 50% 0; background-size: cover; }
+#bg			{ display: none; }
+
 /* ===============
     Maximal Width
    =============== */
@@ -255,6 +264,26 @@ nav a:hover{
 	}
 	
 	#main article		{ padding: 0 2%; }
+	
+	
+	
+	/* Page Transitions
+	-----------------------*/
+	#header-container,
+	#main						{ -webkit-transform-style: preserve-3d; -webkit-box-sizing: border-box; }
+	
+	#main						{ position: relative; min-height: 200px; }
+	
+	div.content > *				{ -webkit-transition: all .25s ease-in-out; }
+	div.content > article				{ opacity: 1; }
+	div.content.hold-children > article	{ opacity: 0; }
+	
+	
+	div.content > aside					{ }
+	div.content.hold-children > aside	{ -webkit-transform: scale(.5); opacity: 0; }
+	
+	
+	
 }
 
 /* ==|== print styles ======================================================= */
